@@ -13,6 +13,7 @@ const Header = () => {
       <SuperHeader />
       <MainHeader>
         <Logo />
+        <Spacer flex={1} />
         <Nav>
           <NavLink href="/sale">Sale</NavLink>
           <NavLink href="/new">New&nbsp;Releases</NavLink>
@@ -21,6 +22,7 @@ const Header = () => {
           <NavLink href="/kids">Kids</NavLink>
           <NavLink href="/collections">Collections</NavLink>
         </Nav>
+        <Spacer flex={2} />
       </MainHeader>
     </header>
   );
@@ -34,12 +36,18 @@ const MainHeader = styled.div`
   gap: 24px;
 `;
 
+const Spacer = styled.div`
+  min-width: 16px;
+  flex: ${(p) => p.flex};
+`;
+
 const Nav = styled.nav`
+  flex: 2 auto;
   display: flex;
-  gap: 48px;
-  margin-left: auto;
-  margin-right: auto;
-  flex-shrink: 1;
+  gap: 24px;
+  justify-content: space-between;
+  /* margin-left: auto;
+  margin-right: auto; */
 `;
 
 const NavLink = styled.a`
