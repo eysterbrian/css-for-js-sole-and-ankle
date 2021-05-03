@@ -33,16 +33,16 @@ const MainHeader = styled.div`
   border-bottom: 1px solid ${COLORS.gray[300]};
   display: flex;
   align-items: baseline;
-  gap: 24px;
+  gap: 12px;
 `;
 
 const Spacer = styled.div`
-  min-width: 16px;
+  min-width: 0;
   flex: ${(p) => p.flex};
 `;
 
 const Nav = styled.nav`
-  flex: 2 auto;
+  /* flex: 2 auto; */
   display: flex;
   gap: 24px;
   justify-content: space-between;
