@@ -36,11 +36,16 @@ const ShoeCard = ({
       <Wrapper>
         <ImageWrapper>
           <Image alt="" src={imageSrc} />
+          {variant === 'default' || (
+            <Variant variant={variant}>
+              {variant === 'on-sale' ? 'Sale' : 'Just Released!'}
+            </Variant>
+          )}
         </ImageWrapper>
         <Spacer size={12} />
         <Row>
           <Name>{name}</Name>
-          <Price>{formatPrice(price)}</Price>
+          <Price reduced={!!salePrice}>{formatPrice(price)}</Price>
         </Row>
         <Row>
           <ColorInfo>{pluralize('Color', numOfColors)}</ColorInfo>
@@ -63,6 +68,7 @@ const ImageWrapper = styled.div`
 `;
 
 const Image = styled.img`
+  border-radius: 16px 16px 4px 4px;
   width: 100%;
 `;
 
@@ -72,12 +78,28 @@ const Row = styled.div`
   justify-content: space-between;
 `;
 
+const Variant = styled.div`
+  color: ${COLORS.white};
+  font-size: 0.8rem;
+  background: ${(p) =>
+    p.variant === 'on-sale' ? COLORS.primary : COLORS.secondary};
+  padding: 7px 9px 9px 10px;
+  position: absolute;
+  top: 12px;
+  border-radius: 2px;
+  font-weight: bold;
+  right: 0px;
+  margin-right: -4px;
+`;
+
 const Name = styled.h3`
   font-weight: ${WEIGHTS.medium};
   color: ${COLORS.gray[900]};
 `;
 
-const Price = styled.span``;
+const Price = styled.span`
+  text-decoration: ${(p) => p.reduced && 'line-through'};
+`;
 
 const ColorInfo = styled.p`
   color: ${COLORS.gray[700]};
